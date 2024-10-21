@@ -1,64 +1,13 @@
-import { type CookieOptions, createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse, userAgent } from "next/server";
+
+import { createClient } from "./lib/supabase/middleware";
 
 /** @see {@link https://nextjs.org/docs/app/building-your-application/routing/middleware} */
 export async function middleware(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const requestPath = request.nextUrl.pathname;
 
-  /** @see {@link https://supabase.com/docs/guides/auth/server-side/creating-a-client?environment=middleware&queryGroups=framework&framework=nextjs&queryGroups=environment} */
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  });
-
-  /** supabase client */
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return request.cookies.get(name)?.value;
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-        },
-      },
-    }
-  );
+  const { supabase, response } = createClient(request);
 
   /** get supabase auth user */
   const auth = await supabase.auth.getUser();
