@@ -26,7 +26,7 @@ jobs:
         # If diff is exist, create a PR
         if: ${{ steps.diff.outcome == 'failure' }}
         run: |
-          PR_URL=$(gh pr create -B main -t "release(prod): weekly merge from develop into main" -l 'Type: Release' -b "Regular merge every Monday at 00:00.")
+          PR_URL=$(gh pr create -B main -t "release(prod): weekly merge from develop into main" -l 'Type: Release' -b "Regular merge every Monday at 09:00 JST.")
           echo "PR_URL=$PR_URL" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
