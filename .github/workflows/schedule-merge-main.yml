@@ -1,7 +1,7 @@
 name: Schedule merge from develop into main
 on:
   schedule:
-    - cron: "0 15 * * 0" # Every Monday at 00:00 JST
+    - cron: "0 0 * * 1" # Every Monday at 09:00 JST
   workflow_dispatch:
 
 permissions:
@@ -36,11 +36,11 @@ jobs:
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.IPUTAPP_BOT_PAT_APPROVE }}
       - name: Enable auto-merge for PRs
         # Only merge if PR has diff
         if: ${{ steps.diff.outcome == 'failure' }}
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.IPUTAPP_BOT_PAT_APPROVE }}
