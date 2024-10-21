@@ -33,20 +33,14 @@ jobs:
       - name: Approve a PR
         # Only approve if PR has diff
         if: ${{ steps.diff.outcome == 'failure' }}
-        run: |
-          git config user.name  "iputapp[bot]"
-          git config user.email "185724386+iputapp-bot@users.noreply.github.com"
-          gh pr review --approve "$PR_URL"
+        run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.IPUTAPP_BOT_PAT_APPROVE }}
       - name: Enable auto-merge for PRs
         # Only merge if PR has diff
         if: ${{ steps.diff.outcome == 'failure' }}
-        run: |
-          git config user.name  "iputapp[bot]"
-          git config user.email "185724386+iputapp-bot@users.noreply.github.com"
-          gh pr merge --auto --merge "$PR_URL"
+        run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.IPUTAPP_BOT_PAT_APPROVE }}
