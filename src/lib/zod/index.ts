@@ -134,7 +134,7 @@ export const RestaurantOptionalDefaultsWithRelationsSchema: z.ZodType<Restaurant
 /////////////////////////////////////////
 
 export const RestaurantTagSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -147,7 +147,7 @@ export type RestaurantTag = z.infer<typeof RestaurantTagSchema>
 //------------------------------------------------------
 
 export const RestaurantTagOptionalDefaultsSchema = RestaurantTagSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -185,7 +185,7 @@ export const RestaurantTagOptionalDefaultsWithRelationsSchema: z.ZodType<Restaur
 /////////////////////////////////////////
 
 export const RestaurantOpenSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   timeOpen: z.coerce.date(),
@@ -200,7 +200,7 @@ export type RestaurantOpen = z.infer<typeof RestaurantOpenSchema>
 //------------------------------------------------------
 
 export const RestaurantOpenOptionalDefaultsSchema = RestaurantOpenSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -349,7 +349,7 @@ export const RouteOptionalDefaultsWithRelationsSchema: z.ZodType<RouteOptionalDe
 /////////////////////////////////////////
 
 export const RouteTypeSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -362,7 +362,7 @@ export type RouteType = z.infer<typeof RouteTypeSchema>
 //------------------------------------------------------
 
 export const RouteTypeOptionalDefaultsSchema = RouteTypeSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -400,7 +400,7 @@ export const RouteTypeOptionalDefaultsWithRelationsSchema: z.ZodType<RouteTypeOp
 /////////////////////////////////////////
 
 export const PaymentSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   accepted: z.boolean(),
@@ -415,7 +415,7 @@ export type Payment = z.infer<typeof PaymentSchema>
 //------------------------------------------------------
 
 export const PaymentOptionalDefaultsSchema = PaymentSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -457,7 +457,7 @@ export const PaymentOptionalDefaultsWithRelationsSchema: z.ZodType<PaymentOption
 /////////////////////////////////////////
 
 export const PaymentTypeSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -469,7 +469,7 @@ export type PaymentType = z.infer<typeof PaymentTypeSchema>
 //------------------------------------------------------
 
 export const PaymentTypeOptionalDefaultsSchema = PaymentTypeSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -572,7 +572,7 @@ export const DishOptionalDefaultsWithRelationsSchema: z.ZodType<DishOptionalDefa
 /////////////////////////////////////////
 
 export const DishTagSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -585,7 +585,7 @@ export type DishTag = z.infer<typeof DishTagSchema>
 //------------------------------------------------------
 
 export const DishTagOptionalDefaultsSchema = DishTagSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -623,7 +623,7 @@ export const DishTagOptionalDefaultsWithRelationsSchema: z.ZodType<DishTagOption
 /////////////////////////////////////////
 
 export const DishScoreSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   score: z.number(),
@@ -637,7 +637,7 @@ export type DishScore = z.infer<typeof DishScoreSchema>
 //------------------------------------------------------
 
 export const DishScoreOptionalDefaultsSchema = DishScoreSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -679,7 +679,7 @@ export const DishScoreOptionalDefaultsWithRelationsSchema: z.ZodType<DishScoreOp
 /////////////////////////////////////////
 
 export const DishTraitSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -692,7 +692,7 @@ export type DishTrait = z.infer<typeof DishTraitSchema>
 //------------------------------------------------------
 
 export const DishTraitOptionalDefaultsSchema = DishTraitSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -730,7 +730,7 @@ export const DishTraitOptionalDefaultsWithRelationsSchema: z.ZodType<DishTraitOp
 /////////////////////////////////////////
 
 export const VisitHistorySchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   userId: z.string(),
@@ -743,7 +743,7 @@ export type VisitHistory = z.infer<typeof VisitHistorySchema>
 //------------------------------------------------------
 
 export const VisitHistoryOptionalDefaultsSchema = VisitHistorySchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -785,7 +785,7 @@ export const VisitHistoryOptionalDefaultsWithRelationsSchema: z.ZodType<VisitHis
 /////////////////////////////////////////
 
 export const UserSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   username: z.string(),
@@ -800,7 +800,7 @@ export type User = z.infer<typeof UserSchema>
 //------------------------------------------------------
 
 export const UserOptionalDefaultsSchema = UserSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -842,7 +842,7 @@ export const UserOptionalDefaultsWithRelationsSchema: z.ZodType<UserOptionalDefa
 /////////////////////////////////////////
 
 export const OrganizationSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -859,7 +859,7 @@ export type Organization = z.infer<typeof OrganizationSchema>
 //------------------------------------------------------
 
 export const OrganizationOptionalDefaultsSchema = OrganizationSchema.merge(z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
